@@ -1,0 +1,95 @@
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Creating a HashSet
+        Set<String> set = new HashSet<>();
+
+        // Adding elements from user input
+        System.out.println("Enter elements for the set (type 'done' to finish):");
+        while (true) {
+            String input = scanner.nextLine();
+            if (input.equalsIgnoreCase("done")) {
+                break;
+            }
+            set.add(input);
+        }
+
+        // Displaying the set
+        System.out.println("Set elements: " + set);
+
+        // Checking if set contains an element
+        System.out.println("Enter an element to check if it is contained in the set:");
+        String checkElement = scanner.nextLine();
+        boolean containsElement = set.contains(checkElement);
+        System.out.println("Contains '" + checkElement + "': " + containsElement);
+
+        // Getting the size of the set
+        int setSize = set.size();
+        System.out.println("Set size: " + setSize);
+
+        // Checking if the set is empty
+        boolean isEmpty = set.isEmpty();
+        System.out.println("Is set empty: " + isEmpty);
+
+        // Iterating over elements in the set
+        System.out.println("Iterating over elements:");
+        for (String element : set) {
+            System.out.println(element);
+        }
+
+        // Removing an element
+        System.out.println("Enter an element to remove from the set:");
+        String removeElement = scanner.nextLine();
+        set.remove(removeElement);
+        System.out.println("Set elements after removal: " + set);
+
+        // Clearing the set
+        set.clear();
+        System.out.println("Set elements after clearing: " + set);
+
+        // Creating another set for set union, intersection, and difference
+        Set<String> set1 = new HashSet<>();
+        Set<String> set2 = new HashSet<>();
+
+        System.out.println("Enter elements for set1 (type 'done' to finish):");
+        while (true) {
+            String input = scanner.nextLine();
+            if (input.equalsIgnoreCase("done")) {
+                break;
+            }
+            set1.add(input);
+        }
+
+        System.out.println("Enter elements for set2 (type 'done' to finish):");
+        while (true) {
+            String input = scanner.nextLine();
+            if (input.equalsIgnoreCase("done")) {
+                break;
+            }
+            set2.add(input);
+        }
+
+        // Set Union
+        Set<String> union = new HashSet<>(set1);
+        union.addAll(set2);
+        System.out.println("Set Union: " + union);
+
+        // Set Intersection
+        Set<String> intersection = new HashSet<>(set1);
+        intersection.retainAll(set2);
+        System.out.println("Set Intersection: " + intersection);
+
+        // Set Difference
+        Set<String> difference = new HashSet<>(set1);
+        difference.removeAll(set2);
+        System.out.println("Set Difference: " + difference);
+
+        // Close the scanner
+        scanner.close();
+    }
+}
